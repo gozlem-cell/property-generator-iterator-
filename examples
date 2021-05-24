@@ -1,0 +1,129 @@
+#################### PROPERTY #######################
+#####################################################
+
+class Employee:
+    def __init__(self,param):
+        self.__name=param
+
+    def getname(self):
+        print(self.__name,"__name is read")
+        return self.__name
+
+    def setname(self,param):
+        self.__name=param
+        print(self.__name,"__name is changed.")
+
+    n_name=property(getname,setname) # function names should be in same order with get,set.
+
+
+obj1 = Employee("Sam")
+# print(obj1.getname())
+# obj1.setname("Alan")
+# print(obj1.getname())
+
+# obj1.n_name="Omar" # property assigned as set.
+# print(obj1.n_name) # property read as get.
+
+######################################################################################
+
+#### Ex: Midterm and final grades are taken and averaujıge is calculated (AVG()) with a class named University().
+"""
+#from University import university / if you want to keep university class in another file. We used here. 
+
+class university():
+    def __init__(self):
+        self.__midterm=0
+        self.__final=0
+
+    def getmidterm(self):
+        return self.__midterm
+
+    def setmidterm(self,parameter):
+        if(parameter<0 or parameter>100):
+            while True:
+                print("Wrong interval!!Between (0-100)")
+                mid_grade = int(input("Midterm Grade:"))
+                if mid_grade<0 or mid_grade>100:
+                    continue
+                else:
+                    self.__midterm=mid_grade
+                    break
+
+        else:
+            self.__midterm=parameter
+
+    midterm = property(getmidterm,setmidterm)
+    
+#shortcut of making property: 
+    @property
+    def final(self):
+        return self.__final
+
+    @final.setter
+    def final(self,parameter):
+        if(parameter<0 or parameter>100):
+            print("Wrong interval!!Between (0-100)")
+            while True:
+                final_grade=int(input("Final grade:"))
+                if final_grade<0 or final_grade>100:
+                    print("Wrong interval!!Between (0-100)")
+                else:
+                    self.__final=final_grade
+                    break
+        else:
+            self.__final=parameter
+
+    def Avg(self):
+        print("Student course average:",((self.__midterm*0.4)+(self.__final*0.6)))
+####################################################################################################
+
+student = university()
+# print(student.getmidterm())
+# student.setmidterm(80)
+# print(student.getmidterm())
+
+# student.midterm=150
+# print(student.midterm)
+
+student.midterm=70
+student.final=101
+student.Avg()
+"""
+##################################################################################
+################ ITERATOR #################
+"""
+numbers=[0,1,2,3,4,5,6,7,8,9]
+
+# for number in numbers:
+#     print(number)
+
+print("it is an iterator")
+step = iter(numbers)
+print(next(step)) # 1. step
+print(next(step)) # 2. 
+print(next(step)) # 3. 
+print(next(step)) # 4. 
+print(next(step)) # 5. 
+print(next(step)) # 6. 
+print(next(step)) # 7.
+print(next(step)) # 8. 
+print(next(step)) # 9. 
+print(next(step)) # 10. / no more left- if you continue it will give error.
+
+step = iter(numbers) # Starts again...
+print(next(step)) # 1. again
+"""
+
+############## Generator ###############
+"""
+def inc_order():
+    yield 10
+    yield 20
+    yield 30
+
+test = inc_order()
+print(next(test))
+print(next(test))
+print(next(test))
+print(next(test))
+"""
